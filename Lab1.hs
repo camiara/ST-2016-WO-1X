@@ -71,3 +71,28 @@ factorial n = if n == 0 then 1 else n * factorial (n - 1)
 
 test5:: Int-> Bool
 test5 n= if n<0 then True else length(perms[1..n]) == factorial n
+
+-- I've tested this with 'verboseCheck test5' and seems to be very hard to comp-
+-- pute, I believe it is because quickCheck can throw any number and factorial
+-- 15 is already a cifer with 13 digits, it means that computations grow expone-
+-- tially.
+-- 40 min
+
+--Ex4 reversal primes
+--prime numbers <10 are not interesting since their reversal is itself.
+
+listRev:: [Integer]
+listRev = filter (>0) (map findRev [10..10000])
+
+findRev:: Integer -> Integer
+findRev n = if isRevPrimes n then n else 0
+
+isRevPrimes:: Integer -> Bool
+isRevPrimes n = if n < 0 then True else prime n && prime (reversal n)
+
+--test6:: Bool
+--test6 length (listRev) == length (isRevInList listRev)
+
+--isRevInList:: [Integer] -> [Integer]
+--isRevInList (x:xs) = find reversal x inside xs and add it to new list
+-- im going to sleep now
